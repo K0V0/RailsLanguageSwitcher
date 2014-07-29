@@ -30,7 +30,7 @@ but using mentioned gems it will looks like:
 
 `mypage.sk/clanky/testovacia-kategoria/prvy-clanok`
 
-'mypage.sk/en/blog/test-category/first-article'
+`mypage.sk/en/blog/test-category/first-article`
 
 rake routes:
 
