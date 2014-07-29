@@ -1,0 +1,5 @@
+<% I18n.available_locales.each do |lang| %>
+	<%= content_tag :div, class: "jazyk" + (" aktivna" if params[:locale].to_s == lang.to_s).to_s, id:"lng_"+lang.to_s do %>
+		<%= link_to " ", eval(locale_switcher_link(lang)) %>
+	<% end %>
+<% end %>
