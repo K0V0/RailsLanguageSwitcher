@@ -4,10 +4,12 @@ RailsLanguageSwitcher
 RailsLanguageSwitcher adds missing feature of user-clickable language switcher to your rails app even when you are using nested resources on your models and using rails-translate-routes and friendlyID gems for better SEO and user experience
 
 read more about gems here:
+
 [https://github.com/pebiantara/rails-translate-routes (working fork for rails 4 and up)](https://github.com/pebiantara/rails-translate-routes)
 [https://github.com/norman/friendly_id](https://github.com/norman/friendly_id)
 
 the initial problem that forced me to think about own solution is described here:
+
 [https://github.com/francesc/rails-translate-routes/issues/1](https://github.com/francesc/rails-translate-routes/issues/1)
 
 
