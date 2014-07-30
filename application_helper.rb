@@ -20,7 +20,7 @@ module ApplicationHelper
 				else
 					nova_pth_2 = tmp.try("slug")
 					if nova_pth_2 
-		            	pars[i-3] = tmp.slug
+		            			pars[i-3] = tmp.slug
 					else
 						pars[i-3] = tmp.id
 					end
