@@ -7,6 +7,7 @@ read more about gems here:
 
 [https://github.com/pebiantara/rails-translate-routes (working fork for rails 4 and up)](https://github.com/pebiantara/rails-translate-routes)
 [https://github.com/norman/friendly_id](https://github.com/norman/friendly_id)
+From version 0.1.3 Kaminari pagination gem is also handled: [https://github.com/amatsuda/kaminari](https://github.com/amatsuda/kaminari)
 
 the initial problem that forced me to think about own solution is described here:
 
