@@ -2,11 +2,13 @@ module ApplicationHelper
 
 	def locale_switcher_link(locale)
 
-        kaminari_page_parameter_name = :page
-
-		route_name = ""
-		path_arr = (Rails.application.routes.recognize_path request.path).to_a
-        pars = Array.new(path_arr.length-3)
+		route_name = 						""
+		route_mame_new = 					""
+		kaminari_page_param_name = 			Kaminari.config.param_name if Object.const_defined?("Kaminari")
+		helpers_object = 					Rails.application.routes.url_helpers
+		path_arr = 							Rails.application.routes.recognize_path(request.path).to_a
+        pars =								Array.new(path_arr.length-3)
+       	paginates =							true if (kaminari_page_param_name.nil? && !param[kaminari_page_param_name].nil?)
 
 		for i in 3..path_arr.length-1 do 
 			if (path_arr[i][0] =~ /_id$/) 
@@ -30,24 +32,19 @@ module ApplicationHelper
 			end
 		end 
 
-    	query_string = pars.join("\", \"")
-
     	Rails.application.routes.router.recognize(request) do |route, _|
-    		route_name = (route.name).to_s.gsub(/_[a-z]+$/, "_#{locale.to_s}") + "_path"
+    		route_name = (route.name).to_s.gsub(/_[a-z]+$/, "_#{locale.to_s}") + "_path" if !route.name.blank?
     	end
 
-        if current_page?(root_url)
-            route = eval("root_#{locale}_path")
-        else
-            route = eval(route_name + "(\"#{query_string}\")")
-        end
+    	if (pars.blank? || pars.any? { |p| p.nil? })
+    		if paginates
+    			pars = param[kaminari_page_param_name] 
+    		else
+    			pars << param[kaminari_page_param_name]
+			end
+    	end
 
-        if (!kaminari_page_parameter_name.nil? && !params[kaminari_page_parameter_name].nil?)
-           route = (route.gsub(/\/$/, "")) + "/" + params[kaminari_page_parameter_name].to_s
-        end
-
-        return route
-
+    return helpers_object.send(route_name, *pars)
     end
   
 end
