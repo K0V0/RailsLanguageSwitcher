@@ -32,19 +32,19 @@ module ApplicationHelper
 			end
 		end 
 
-    	Rails.application.routes.router.recognize(request) do |route, _|
-    		route_name = (route.name).to_s.gsub(/_[a-z]+$/, "_#{locale.to_s}") + "_path" if !route.name.blank?
-    	end
+    		Rails.application.routes.router.recognize(request) do |route, _|
+    			route_name = (route.name).to_s.gsub(/_[a-z]+$/, "_#{locale.to_s}") + "_path" if !route.name.blank?
+    		end
 
-    	if (pars.blank? || pars.any? { |p| p.nil? })
-    		if paginates
-    			pars = param[kaminari_page_param_name] 
-    		else
+    		if (pars.blank? || pars.any? { |p| p.nil? })
+    			if paginates
+    				pars = param[kaminari_page_param_name] 
+    			else
     				pars << param[kaminari_page_param_name]
 			end
-    	end
+    		end
 
-    return helpers_object.send(route_name, *pars)
+    	return helpers_object.send(route_name, *pars)
 	end
   
 end
