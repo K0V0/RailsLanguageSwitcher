@@ -2,13 +2,13 @@ module ApplicationHelper
 
 	def locale_switcher_link(locale)
 
-		route_name = 					""
-		kaminari_page_param_name = 		Kaminari.config.param_name if Object.const_defined?("Kaminari")
-		helpers_object = 				Rails.application.routes.url_helpers
-		path_arr = 						Rails.application.routes.recognize_path(request.path).to_a
-		pars =							Array.new(path_arr.length-3)
-		paginates =						true if ((!kaminari_page_param_name.nil?)&&(!params[kaminari_page_param_name].nil?))
-		current_locale = 				I18n.locale
+		route_name = 			""
+		kaminari_page_param_name = 	Kaminari.config.param_name if Object.const_defined?("Kaminari")
+		helpers_object = 		Rails.application.routes.url_helpers
+		path_arr = 			Rails.application.routes.recognize_path(request.path).to_a
+		pars =				Array.new(path_arr.length-3)
+		paginates =			true if ((!kaminari_page_param_name.nil?)&&(!params[kaminari_page_param_name].nil?))
+		current_locale = 		I18n.locale
 
 		for i in 3..path_arr.length-1 do 
 			if (path_arr[i][0] =~ /_id$/) 
