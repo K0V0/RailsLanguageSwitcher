@@ -3,9 +3,9 @@ module ApplicationHelper
 	def locale_switcher_link(locale)
 
 		route_name = 		""
-		path_arr = 			Rails.application.routes.recognize_path(request.path).to_a
+		path_arr = 		Rails.application.routes.recognize_path(request.path).to_a
 		path_base = 		Hash[path_arr.take(2)]
-		parshash =			Hash.new(path_arr.length-3)
+		parshash =		Hash.new(path_arr.length-3)
 		current_locale = 	I18n.locale
 
 		for i in 3..path_arr.length-1 do 
